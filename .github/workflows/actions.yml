@@ -24,9 +24,11 @@ jobs:
           # Access Token that was used to access workflow repository
           echo "$${{ github.token }}"
           # Clone to subdir using variables
-          git clone git@$GITHUB_REPOSITORY
+          git clone git@github:$GITHUB_REPOSITORY ./tmpdir
           # Checkout to commit that triggered workflow
+          cd ./tmpdir
           git checkout $GITHUB_SHA
+          ls -la
       - name: Simple JS Actions
         id: greet
         # username/repository-name@reference (like tag)
