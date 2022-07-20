@@ -22,9 +22,9 @@ jobs:
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
           # Access Token that was used to access workflow repository
-          echo "$${{ github.token }}"
+          echo "${{ github.token }}"
           # Clone to subdir using variables
-          git clone git@github:$GITHUB_REPOSITORY ./tmpdir
+          git clone git@github.com:$GITHUB_REPOSITORY ./tmpdir
           # Checkout to commit that triggered workflow
           cd ./tmpdir
           git checkout $GITHUB_SHA
