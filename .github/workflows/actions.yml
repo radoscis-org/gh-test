@@ -13,10 +13,20 @@ jobs:
           ls -la
       - name: Checkout
         uses: actions/checkout@v3.0.2
-      - name: List Files after checkout
+      - name: List Files after checkout and echo automatic variables
         run: |
           pwd
           ls -la
+          # Commit that triggered workflow
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          # Access Token that was used to access workflow repository
+          echo "$${{ github.token }}"
+          # Clone to subdir using variables
+          git clone git@$GITHUB_REPOSITORY
+          # Checkout to commit that triggered workflow
+          git checkout $GITHUB_SHA
       - name: Simple JS Actions
         id: greet
         # username/repository-name@reference (like tag)
