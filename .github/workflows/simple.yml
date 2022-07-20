@@ -1,0 +1,13 @@
+name: Shell Commands
+on: [push]
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: echo a string
+        run: echo "Hello From Workflow"
+      - name: multiline script
+        run: |
+          node -v
+          python --version
