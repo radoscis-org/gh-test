@@ -6,6 +6,10 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-22.04
     steps:
+      - name: List Files
+        run: |
+          pwd
+          ls -l
       - name: Simple JS Actions
         id: greet
         # username/repository-name@reference (like tag)
