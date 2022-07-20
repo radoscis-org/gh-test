@@ -6,7 +6,14 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-22.04
     steps:
+      # By default GH does not clone our repository list of files will be empty
       - name: List Files
+        run: |
+          pwd
+          ls -l
+      - name: Checkout
+        uses: actions/checkout@v3.0.2
+      - name: List Files after checkout
         run: |
           pwd
           ls -l
