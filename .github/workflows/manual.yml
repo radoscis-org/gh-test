@@ -1,0 +1,13 @@
+name: Manual Dispatch Workflow
+on:
+  repository_dispatch:
+    types: [on-demand-run]
+
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Hello From Step
+        run: |
+          echo "Hello From Step"

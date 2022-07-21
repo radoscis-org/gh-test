@@ -1,6 +1,8 @@
 name: Actions Workflow
 
-on: [push, pull_request]
+on:
+  pull_request:
+    types: [closed, assigned, opened, reopened]
 
 jobs:
   run-github-actions:
@@ -18,7 +20,8 @@ jobs:
           pwd
           ls -la
           # Commit that triggered workflow
-          echo $GITHUB_SHA
+          echo "GITHUB SHA is : ${GITHUB_SHA}"
+          echo "GITHUB_REF is : ${GITHUB_REF}"
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
           # Access Token that was used to access workflow repository
