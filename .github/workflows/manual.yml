@@ -1,0 +1,11 @@
+name: Triggered from Repository Dispatch
+on:
+  repository_dispatch
+
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Hello From Step
+        run: echo "Hello From Step"
