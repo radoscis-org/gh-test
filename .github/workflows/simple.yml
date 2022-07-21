@@ -1,6 +1,24 @@
 name: Shell Commands
 on:
-  #push:
+  push:
+    branches:
+      - main
+      - 'feature/*' # does not match feature/cos/cos
+      - 'feature/**' # does match feature/cos/cos
+      - '!feature/featC' # Ignore this branch (has to be added after main patterns)
+    # branches-ignore:
+    #   - 'bug/*'
+    tags:
+      - v1.1
+    # tags-ignore:
+    #   - "v0.1"
+    paths:
+      - '**.js' # runs only when js file is changed
+      - '!filename.js' # ignore this file
+    # paths-ignore:
+    #   - "**.md"
+    #   - 'docs/**'
+
   schedule:
     - cron: "12 10 21 7 *"
 
