@@ -1,6 +1,6 @@
 name: Shell Commands
 on:
-  # push
+  #push:
   schedule:
     - cron: "12 10 21 7 *"
 
