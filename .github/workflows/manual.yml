@@ -1,6 +1,7 @@
 name: Triggered from Repository Dispatch
 on:
-  repository_dispatch
+  repository_dispatch:
+    types: [on-demand-run]
 
 
 jobs:
