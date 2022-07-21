@@ -11,3 +11,6 @@ jobs:
       - name: Hello From Step
         run: |
           echo "Hello From Step"
+      - name: Retrive Client Payload
+        run: |
+          echo ${{ github.event.client_payload.env }}
