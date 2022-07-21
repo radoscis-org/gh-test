@@ -2,7 +2,7 @@ name: Shell Commands
 on:
   # push
   schedule:
-    - cron: "59 11 21 7 *"
+    - cron: "12 10 21 7 *"
 
 jobs:
   run-shell-command:
