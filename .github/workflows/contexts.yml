@@ -1,21 +1,27 @@
 name: Contexts Play
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   display-contexts-objects:
     runs-on: ubuntu-22.04
+    if: github.event_name == 'push'
     steps:
       - name: Dump GitHub context
         id: github_context_step
-        run: echo '${{ toJSON(github) }}'
+        run: eccho '${{ toJSON(github) }}'
       - name: Dump job context
+        # Return failure if previous step fails
+        if: failure()
         run: echo '${{ toJSON(job) }}'
       - name: Dump steps context
+        if: success()
         run: echo '${{ toJSON(steps) }}'
       - name: Dump runner context
+        if: always()
         run: echo '${{ toJSON(runner) }}'
       - name: Dump strategy context
+        if: cancelled()
         run: echo '${{ toJSON(strategy) }}'
       - name: Dump matrix context
         run: echo '${{ toJSON(matrix) }}'
@@ -28,5 +34,3 @@ jobs:
         echo ${{ startsWith('hello', 'he')}}
         echo ${{ endsWith('hello', 'lo')}}
         echo ${{ format('Hello {0} {1} {2}', 'World','!','!') }}
-
-
