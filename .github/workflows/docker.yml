@@ -1,0 +1,16 @@
+name: Containers
+on: [push]
+
+jobs:
+  node-docker:
+    runs-on: ubuntu-22.04
+    container:
+      image: lts-bullseye-slim
+      env:
+        MY_ENV_VAR: "true"
+      # ports:
+      # volumes:
+      # options: --cpus 1 --host ...
+    steps:
+    - name: Log node version
+      run: node --version
