@@ -24,10 +24,14 @@ on:
 
 jobs:
   run-shell-command:
+    timeout-minutes: 360
     runs-on: ubuntu-22.04
     steps:
       - name: echo a string
         run: echo "Hello From Workflow"
+        # Continue all other steps on error
+        continue-on-error: true
+        timeout-minutes: 30
       - name: multiline script
         run: |
           node -v

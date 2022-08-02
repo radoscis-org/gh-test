@@ -1,0 +1,18 @@
+name: Strategy exercices
+
+on: [push]
+
+jobs:
+  node-version:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Log node version
+        run: node --version
+      - name: Setup Node Action
+        uses: actions/setup-node@v3.4.1
+        with:
+          node-version: '12'
+      - name: Log node version
+        run: node --version
+
+
