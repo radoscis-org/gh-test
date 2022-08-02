@@ -5,7 +5,7 @@ jobs:
   node-docker:
     runs-on: ubuntu-22.04
     container:
-      image: lts-bullseye-slim
+      image: 18-buster-slim
       env:
         MY_ENV_VAR: "true"
       # ports:
