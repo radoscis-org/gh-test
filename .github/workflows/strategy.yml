@@ -8,6 +8,14 @@ jobs:
       matrix:
         node_version: [12,14,16]
         os: [ubuntu-22.04, macos-latest]
+        exclude:
+          - os: macos-latest
+            node_version: 12
+        # add extra values/attributes to job that already exists in our matrix
+        include:
+          - os: macos-latest
+            node_version: 16
+            is_macos_16: "true"
       # fail-fast: true
       max-parallel: 2
     runs-on: ${{ matrix.os }}
@@ -20,4 +28,7 @@ jobs:
         run: |
           echo "Running on ${{ matrix.os }}"
           node --version
+          echo "IS_MACOS_AND_16: ${IS_MACOS_AND_16}"
+        env:
+          IS_MACOS_AND_16: ${{ matrix.is_macos_16 }}
 
