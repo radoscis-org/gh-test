@@ -27,8 +27,8 @@ jobs:
       - name: Step with Docker - run own script as entrypoint
         uses: docker://node:lts-buster-slim
         with:
-          entrypoint: /bin/ls
-          args: "-ltra"
+          entrypoint: /script.sh
+          args: "Hello World"
   node-docker:
     runs-on: ubuntu-22.04
     container:
