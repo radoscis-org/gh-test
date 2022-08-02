@@ -4,15 +4,20 @@ on: [push]
 
 jobs:
   node-version:
-    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        node_version: [12,14,16]
+        os: [ubuntu-22.04, macos-latest]
+      # fail-fast: true
+      max-parallel: 2
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: Log node version
-        run: node --version
       - name: Setup Node Action
         uses: actions/setup-node@v3.4.1
         with:
-          node-version: '12'
+          node-version: ${{ matrix.node_version }}
       - name: Log node version
-        run: node --version
-
+        run: |
+          echo "Running on ${{ matrix.os }}"
+          node --version
 
