@@ -14,3 +14,6 @@ jobs:
       - name: Retrive Client Payload
         run: |
           echo ${{ github.event.client_payload.env }}
+      - name: Display Full github event
+        run: |
+          echo ${{ github.event }}
