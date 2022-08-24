@@ -16,4 +16,4 @@ jobs:
           echo ${{ github.event.client_payload.env }}
       - name: Display Full github event
         run: |
-          echo ${{ toJSON(github.event) }}
+          echo '${{ toJSON(github.event) }}'
