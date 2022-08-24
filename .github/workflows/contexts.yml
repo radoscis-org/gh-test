@@ -27,7 +27,7 @@ jobs:
         if: cancelled()
         run: echo "Runnign because cancelled job"
       - name: Dump strategy context
-        if: cancelled()
+        if: always()
         run: echo '${{ toJSON(strategy) }}'
       - name: Dump matrix context
         run: echo '${{ toJSON(matrix) }}'
