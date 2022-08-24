@@ -12,6 +12,7 @@ jobs:
         run: echo '${{ toJSON(github) }}'
       - name: Run when failure
         if: failure()
+        run: echo "Runnign because failed step job"
       - name: Dump job context
         # Return failure if previous step fails
         if: always()
@@ -24,8 +25,9 @@ jobs:
         run: echo '${{ toJSON(runner) }}'
       - name: Run if Cancelled
         if: cancelled()
+        run: echo "Runnign because cancelled job"
       - name: Dump strategy context
-        if: always()
+        if: cancelled()
         run: echo '${{ toJSON(strategy) }}'
       - name: Dump matrix context
         run: echo '${{ toJSON(matrix) }}'
