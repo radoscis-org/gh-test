@@ -38,6 +38,11 @@ jobs:
           cd ./tmpdir
           # git checkout $GITHUB_SHA
           ls -la
+      - name: Display Github Context
+        run: |
+          echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
       - name: Simple JS Actions
         id: greet
         # username/repository-name@reference (like tag)
