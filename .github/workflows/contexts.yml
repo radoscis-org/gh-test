@@ -10,9 +10,11 @@ jobs:
       - name: Dump GitHub context
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
+      - name: Run when failure
+        if: failure()
       - name: Dump job context
         # Return failure if previous step fails
-        if: failure()
+        if: always()
         run: echo '${{ toJSON(job) }}'
       - name: Dump steps context
         if: success()
@@ -20,8 +22,10 @@ jobs:
       - name: Dump runner context
         if: always()
         run: echo '${{ toJSON(runner) }}'
-      - name: Dump strategy context
+      - name: Run if Cancelled
         if: cancelled()
+      - name: Dump strategy context
+        if: always()
         run: echo '${{ toJSON(strategy) }}'
       - name: Dump matrix context
         run: echo '${{ toJSON(matrix) }}'
